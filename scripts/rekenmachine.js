@@ -9,6 +9,9 @@ let number2Input = document.getElementById("number2");
 // resultaat vakje koppelen
 let resultOutput = document.getElementById("result");
 
+// errors div koppelen
+let errors = document.getElementById("errors");
+
 // buttons koppelen
 let addButton = document.getElementById("add-button");
 let subtractButton = document.getElementById("subtract-button");
@@ -68,6 +71,21 @@ function ClickButton(buttonText) {
         resultOutput.value = parseFloat(result.toFixed(2));
     }
     else {
-        alert("Geen geldige cijfers ingevuld!");
+        Errors(number1, number2);
+    }
+}
+
+function Errors(number1, number2) {
+    // als het eerste cijfer geen correct cijfer is...
+    if (isNaN(number1)) {
+        // foutboodschap onderaan zetten op de pagina
+        errors.innerHTML = "In het eerste vak staat geen correct cijfer!";
+        // foute vakje geel kleuren
+        number1Input.style.backgroundColor = "yellow";
+    }
+    // als het tweede cijfer geen correct cijfer is...
+    if (isNaN(number2)){
+        errors.innerHTML = "In het tweede vak staat geen correct cijfer!";
+        number2Input.style.backgroundColor = "yellow";
     }
 }
